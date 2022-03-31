@@ -37,7 +37,7 @@ tela = display.set_mode(size=(width, height))
 display.set_caption("Turing Inverso")
 
 #Imagem de fundo
-fundoJogo = load('imagens/fundo.png')
+fundoJogo = load('imagens/fundo.png').convert()
 
 telaInicial=True
 telaInst=False
@@ -66,6 +66,7 @@ ButtonD = Button(3*width/4,3*height/5,30,(210,90,90),(210,57,57),textD)
 mqtt.client.connect(mqtt.Broker,mqtt.Port,mqtt.KeepAlive)
 
 end = False
+mqtt.client.loop_start()
 while(not end):
     pg.init()
 
@@ -79,22 +80,21 @@ while(not end):
         else:
             ButtonJ.drawDark(tela)
 
-    ButtonJ.putText(tela)
+        ButtonJ.putText(tela)
 
-    pg.display.update()
+        pg.display.update()
 
-    for event in pg.event.get():
-            if(event.type == pg.QUIT):
-                pg.quit() 
-            if (event.type == pg.MOUSEBUTTONDOWN):  
-                if ButtonJ.isOver(mouse):
-                   telaJogo=True
-                   telaInicial=False
+        for event in pg.event.get():
+                if(event.type == pg.QUIT):
+                    pg.quit() 
+                if (event.type == pg.MOUSEBUTTONDOWN):  
+                    if ButtonJ.isOver(mouse):
+                        telaJogo=True
+                        telaInicial=False
 
     if telaJogo:
 
         tela.blit(fundoJogo,(0,0))
-        pg.display.update()
 
         if ButtonA.isOver(mouse):
             ButtonA.drawLight(tela)
@@ -123,7 +123,6 @@ while(not end):
         
         pg.display.update()
 
-        mqtt.client.loop_start()
 
         for event in pg.event.get():
             if(event.type == pg.QUIT):
@@ -149,6 +148,6 @@ while(not end):
         if mqtt.pronto == 1:
             end=True
             
-        mqtt.client.loop_stop()
+mqtt.client.loop_stop()
 
 pg.quit()
