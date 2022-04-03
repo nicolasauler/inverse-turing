@@ -65,6 +65,8 @@ fundoInst = load('imagens/2.png').convert()
 fundoJogo = load('imagens/fundo.png').convert()
 fundoFinal = load('imagens/fim.png').convert()
 audioIcon = load('imagens/audioIcon.png').convert()
+fundoWin = load('imagens/4.png').convert()
+fundoLos = load('imagens/5.png').convert()
 
 telaInicial=True
 telaInst=False
@@ -236,12 +238,18 @@ while(not end):
             mqtt.perdeu = 0
 
     elif telaWin:
+        if jogando:
+            tela.blit(fundoWin,(0,0))
+            pg.display.update()
+
+            time.sleep(3)
+
         tela.blit(fundoFinal,(0,0))
         
         mqtt.ganhou_aux=1
         rodada =''.join(mqtt.rodada)
         textRod = font.render(str(int(rodada,2)),True,(255,0,0))
-        tela.blit(textRod,(320,80))
+        tela.blit(textRod,(320,60))
 
         if jogando:
             graf.atualizaGraf()
@@ -280,11 +288,17 @@ while(not end):
         jogando = False
 
     elif telaLos:
+        if jogando:
+            tela.blit(fundoLos,(0,0))
+            pg.display.update()
+
+            time.sleep(3)
+
         tela.blit(fundoFinal,(0,0))
 
         rodada =''.join(mqtt.rodada)
         textRod = font.render(str(int(rodada,2)),True,(255,0,0))
-        tela.blit(textRod,(320,80))
+        tela.blit(textRod,(320,60))
 
         if jogando:
             graf.atualizaGraf()
