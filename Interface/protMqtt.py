@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 #Credenciais
 user = "grupo1-bancadaA5"
 passwd = "L@Bdygy1A5"
-Broker = "labdigi.wiseful.com.br"           
+Broker = "labdigi.wiseful.com.br" 
 Port = 80                           
 KeepAlive = 60
 

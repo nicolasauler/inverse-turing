@@ -1,9 +1,10 @@
 import pygame as pg
 import math
+import random
 import protMqtt as mqtt
 import graficos as graf
-import sys
 import time
+import pygame
 from pygame import display, event, font 
 from pygame.image import load
 from playsound import playsound
@@ -60,13 +61,13 @@ tela = display.set_mode(size=(width, height))
 display.set_caption("Turing Inverso")
 
 #Imagem de fundo
-fundoInicio = load('imagens/1.png').convert()
-fundoInst = load('imagens/2.png').convert()
-fundoJogo = load('imagens/fundo.png').convert()
-fundoFinal = load('imagens/fim.png').convert()
-audioIcon = load('imagens/audioIcon.png').convert()
-fundoWin = load('imagens/4.png').convert()
-fundoLos = load('imagens/5.png').convert()
+fundoInicio = load('./assets/images/1.png').convert()
+fundoInst = load('./assets/images/2.png').convert()
+fundoJogo = load('./assets/images/fundo.png').convert()
+fundoFinal = load('./assets/images/fim.png').convert()
+audioIcon = load('./assets/images/audioIcon.png').convert()
+fundoWin = load('./assets/images/4.png').convert()
+fundoLos = load('./assets/images/5.png').convert()
 
 telaInicial=True
 telaInst=False
@@ -74,11 +75,11 @@ telaJogo=False
 telaWin=False
 telaLos=False
 
-audios=['audio1.mp3','audio1.mp3','audio2.mp3','audio1.mp3','audio2.mp3','audio3.mp3','audio1.mp3','audio2.mp3','audio3.mp3','audio4.mp3','audio1.mp3','audio2.mp3','audio3.mp3','audio4.mp3','audio5.mp3']
+audios=['./assets/audios/audio0.mp3','./assets/audios/audio1.mp3','./assets/audios/audio2.mp3','./assets/audios/audio3.mp3','./assets/audios/audio4.mp3']
 
-font = pg.font.SysFont('Changa-VariableFont_wght',50)
-JFont = pg.font.SysFont('Changa-VariableFont_wght',30)
-RFont = pg.font.SysFont('Changa-VariableFont_wght',22)
+font = pg.font.SysFont('./assets/fonts/Changa-VariableFont_wght',50)
+JFont = pg.font.SysFont('./assets/fonts/Changa-VariableFont_wght',30)
+RFont = pg.font.SysFont('./assets/fonts/Changa-VariableFont_wght',22)
 
 #Botões
 textJog = JFont.render('Iniciar',True,(0,0,0))
@@ -106,6 +107,7 @@ mqtt.client.connect(mqtt.Broker,mqtt.Port,mqtt.KeepAlive)
 i=0
 
 end = False
+jogando = False
 mqtt.client.loop_start()
 while(not end):
     pg.init()
@@ -196,7 +198,7 @@ while(not end):
         if mqtt.audio==1:
             tela.blit(audioIcon,(270,200))
             pg.display.update()
-            playsound(audios[i])
+            playsound(audios[random.randint(0,4)])
             pg.draw.rect(tela,(0,0,0),[270,200,100,100])
             pg.display.update()
             mqtt.client.publish(mqtt.user+"/E7", payload="1", qos=0, retain=False)
@@ -238,6 +240,11 @@ while(not end):
             mqtt.perdeu = 0
 
     elif telaWin:
+        size = width, height = (80, 180)
+        vitorias = pygame.Surface(size)
+        size = width, height = (350, 180)
+        rod = pygame.Surface(size)
+
         if jogando:
             tela.blit(fundoWin,(0,0))
             pg.display.update()
@@ -258,6 +265,7 @@ while(not end):
 
         tela.blit(vitorias,(80,180))
         tela.blit(rod,(350,180))
+
         
         if ButtonR.isOver(mouse):
             ButtonR.drawLight(tela)
@@ -288,6 +296,11 @@ while(not end):
         jogando = False
 
     elif telaLos:
+        size = width, height = (80, 180)
+        vitorias = pygame.Surface(size)
+        size = width, height = (350, 180)
+        rod = pygame.Surface(size)
+
         if jogando:
             tela.blit(fundoLos,(0,0))
             pg.display.update()

@@ -23,7 +23,8 @@ def atualizaGraf():
 
     venc=[vencedores, perdedores]
 
-    px=1/plt.rcParams['figure.dpi']
+    
+    px = (1/plt.rcParams['figure.dpi'])
 
     labels='Venceram','Perderam'
     fig1, ax1 = plt.subplots(figsize=(200*px,200*px))
