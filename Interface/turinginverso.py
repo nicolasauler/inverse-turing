@@ -240,11 +240,6 @@ while(not end):
             mqtt.perdeu = 0
 
     elif telaWin:
-        size = width, height = (80, 180)
-        vitorias = pygame.Surface(size)
-        size = width, height = (350, 180)
-        rod = pygame.Surface(size)
-
         if jogando:
             tela.blit(fundoWin,(0,0))
             pg.display.update()
@@ -296,11 +291,6 @@ while(not end):
         jogando = False
 
     elif telaLos:
-        size = width, height = (80, 180)
-        vitorias = pygame.Surface(size)
-        size = width, height = (350, 180)
-        rod = pygame.Surface(size)
-
         if jogando:
             tela.blit(fundoLos,(0,0))
             pg.display.update()
