@@ -136,7 +136,7 @@ while(not end):
                         telaInst=True
                         telaInicial=False
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
@@ -159,7 +159,7 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonJ.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         telaJogo=True
                         telaInst=False
@@ -204,7 +204,7 @@ while(not end):
             pg.draw.rect(tela,(0,0,0),[270,200,100,100])
             pg.display.update()
             mqtt.client.publish(mqtt.user+"/E7", payload="1", qos=0, retain=False)
-            time.sleep(0.2)
+            time.sleep(0.3)
             mqtt.client.publish(mqtt.user+"/E7", payload="0", qos=0, retain=False)
             mqtt.audio=0
             i+=1
@@ -216,19 +216,19 @@ while(not end):
             if (event.type == pg.MOUSEBUTTONDOWN):  
                 if ButtonA.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E3", payload="1", qos=0, retain=False)
-                    time.sleep(0.2)
+                    time.sleep(0.3)
                     mqtt.client.publish(mqtt.user+"/E3", payload="0", qos=0, retain=False)
                 elif ButtonB.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E4", payload="1", qos=0, retain=False)
-                    time.sleep(0.2)
+                    time.sleep(0.3)
                     mqtt.client.publish(mqtt.user+"/E4", payload="0", qos=0, retain=False)
                 elif ButtonC.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E5", payload="1", qos=0, retain=False)
-                    time.sleep(0.2)
+                    time.sleep(0.3)
                     mqtt.client.publish(mqtt.user+"/E5", payload="0", qos=0, retain=False)
                 elif ButtonD.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E6", payload="1", qos=0, retain=False)
-                    time.sleep(0.2)
+                    time.sleep(0.3)
                     mqtt.client.publish(mqtt.user+"/E6", payload="0", qos=0, retain=False)
 
         if mqtt.ganhou == 1:
@@ -279,10 +279,10 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonR.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
@@ -328,10 +328,10 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonR.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.2)
+                        time.sleep(0.3)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
