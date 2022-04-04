@@ -75,7 +75,9 @@ telaJogo=False
 telaWin=False
 telaLos=False
 
-audios=['./assets/audios/audio0.mp3','./assets/audios/audio1.mp3','./assets/audios/audio2.mp3','./assets/audios/audio3.mp3','./assets/audios/audio4.mp3']
+audios=['./assets/audios/audio0.mp3','./assets/audios/audio1.mp3','./assets/audios/audio2.mp3','./assets/audios/audio3.mp3','./assets/audios/audio4.mp3',
+'./assets/audios/audio5.mp3','./assets/audios/audio6.mp3','./assets/audios/audio7.mp3','./assets/audios/audio8.mp3','./assets/audios/audio9.mp3',
+'./assets/audios/audio10.mp3','./assets/audios/audio11.mp3','./assets/audios/audio12.mp3','./assets/audios/audio13.mp3','./assets/audios/audio14.mp3']
 
 font = pg.font.SysFont('./assets/fonts/Changa-VariableFont_wght',50)
 JFont = pg.font.SysFont('./assets/fonts/Changa-VariableFont_wght',30)
@@ -134,7 +136,7 @@ while(not end):
                         telaInst=True
                         telaInicial=False
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
@@ -157,7 +159,7 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonJ.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         telaJogo=True
                         telaInst=False
@@ -198,11 +200,11 @@ while(not end):
         if mqtt.audio==1:
             tela.blit(audioIcon,(270,200))
             pg.display.update()
-            playsound(audios[random.randint(0,4)])
+            playsound(audios[random.randint(0,14)])
             pg.draw.rect(tela,(0,0,0),[270,200,100,100])
             pg.display.update()
             mqtt.client.publish(mqtt.user+"/E7", payload="1", qos=0, retain=False)
-            time.sleep(0.6)
+            time.sleep(0.2)
             mqtt.client.publish(mqtt.user+"/E7", payload="0", qos=0, retain=False)
             mqtt.audio=0
             i+=1
@@ -214,19 +216,19 @@ while(not end):
             if (event.type == pg.MOUSEBUTTONDOWN):  
                 if ButtonA.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E3", payload="1", qos=0, retain=False)
-                    time.sleep(0.6)
+                    time.sleep(0.2)
                     mqtt.client.publish(mqtt.user+"/E3", payload="0", qos=0, retain=False)
                 elif ButtonB.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E4", payload="1", qos=0, retain=False)
-                    time.sleep(0.6)
+                    time.sleep(0.2)
                     mqtt.client.publish(mqtt.user+"/E4", payload="0", qos=0, retain=False)
                 elif ButtonC.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E5", payload="1", qos=0, retain=False)
-                    time.sleep(0.6)
+                    time.sleep(0.2)
                     mqtt.client.publish(mqtt.user+"/E5", payload="0", qos=0, retain=False)
                 elif ButtonD.isOver(mouse):
                     mqtt.client.publish(mqtt.user+"/E6", payload="1", qos=0, retain=False)
-                    time.sleep(0.6)
+                    time.sleep(0.2)
                     mqtt.client.publish(mqtt.user+"/E6", payload="0", qos=0, retain=False)
 
         if mqtt.ganhou == 1:
@@ -277,10 +279,10 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonR.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
@@ -306,7 +308,7 @@ while(not end):
         if jogando:
             graf.atualizaGraf()
             vitorias=load('./assets/images/graphVitorias.png').convert()
-            rod=load('.assets/images/graphRodadas.png').convert()
+            rod=load('./assets/images/graphRodadas.png').convert()
 
         tela.blit(vitorias,(80,180))
         tela.blit(rod,(350,180))
@@ -326,10 +328,10 @@ while(not end):
                 if (event.type == pg.MOUSEBUTTONDOWN):  
                     if ButtonR.isOver(mouse):
                         mqtt.client.publish(mqtt.user+"/E1", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E1", payload="0", qos=0, retain=False)
                         mqtt.client.publish(mqtt.user+"/E2", payload="1", qos=0, retain=False)
-                        time.sleep(0.6)
+                        time.sleep(0.2)
                         mqtt.client.publish(mqtt.user+"/E2", payload="0", qos=0, retain=False)
                         i=0
                         mqtt.rodada=['0','0','0']
