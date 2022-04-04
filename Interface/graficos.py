@@ -26,12 +26,12 @@ def atualizaGraf():
     
     px = (1/plt.rcParams['figure.dpi'])
 
-    labels='Venceram','Perderam'
+    labels='Replicantes','Humanos'
     fig1, ax1 = plt.subplots(figsize=(200*px,200*px))
     ax1.pie(venc, radius=3,center=(4,4),labels=labels,autopct='%1.1f%%', explode=(0.2,0), shadow=True, textprops={'fontsize': 8})
     ax1.axis('equal')
-    fig1.suptitle('Vitórias e Derrotas',fontsize=10)
-    fig1.savefig('imagens/graphVitorias.png',edgecolor=(0,0,0))
+    fig1.suptitle('Humanos e Replicantes',fontsize=10)
+    fig1.savefig('./assets/images/graphVitorias.png',edgecolor=(0,0,0))
     plt.close()
 
     fig2, ax2 = plt.subplots(figsize=(200*px,200*px))
@@ -46,6 +46,6 @@ def atualizaGraf():
     ax2.tick_params(axis='both', labelsize = 6)
     ax2.set_xlabel('Jogadores',fontsize=6)
     fig2.suptitle('Rodada Final',fontsize=10)
-    fig2.savefig('imagens/graphRodadas.png',edgecolor=(0,0,0))
+    fig2.savefig('./assets/images/graphRodadas.png',edgecolor=(0,0,0))
 
     plt.close()
