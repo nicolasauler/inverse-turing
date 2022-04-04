@@ -260,8 +260,8 @@ while(not end):
 
         if jogando:
             graf.atualizaGraf()
-            vitorias=load('imagens/graphVitorias.png').convert()
-            rod=load('imagens/graphRodadas.png').convert()
+            vitorias=load('./assets/images/graphVitorias.png').convert()
+            rod=load('./assets/images/graphRodadas.png').convert()
 
         tela.blit(vitorias,(80,180))
         tela.blit(rod,(350,180))
@@ -315,8 +315,8 @@ while(not end):
 
         if jogando:
             graf.atualizaGraf()
-            vitorias=load('imagens/graphVitorias.png').convert()
-            rod=load('imagens/graphRodadas.png').convert()
+            vitorias=load('./assets/images/graphVitorias.png').convert()
+            rod=load('.assets/images/graphRodadas.png').convert()
 
         tela.blit(vitorias,(80,180))
         tela.blit(rod,(350,180))
