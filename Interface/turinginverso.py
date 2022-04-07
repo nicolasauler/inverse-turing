@@ -106,7 +106,6 @@ ButtonD = Button(4*width/5,6*height/7,30,30,(210,90,90),(210,57,57),textD,True)
 
 mqtt.client.connect(mqtt.Broker,mqtt.Port,mqtt.KeepAlive)
 
-i=0
 
 end = False
 jogando = False
@@ -200,14 +199,15 @@ while(not end):
         if mqtt.audio==1:
             tela.blit(audioIcon,(270,200))
             pg.display.update()
-            playsound(audios[random.randint(0,14)])
+            i=random.randint(0,len(audios)-1)
+            playsound(audios[i])
+            audios.remove(audios[i])
             pg.draw.rect(tela,(0,0,0),[270,200,100,100])
             pg.display.update()
             mqtt.client.publish(mqtt.user+"/E7", payload="1", qos=0, retain=False)
-            time.sleep(0.3)
+            time.sleep(0.2)
             mqtt.client.publish(mqtt.user+"/E7", payload="0", qos=0, retain=False)
             mqtt.audio=0
-            i+=1
 
 
         for event in pg.event.get():
@@ -289,6 +289,9 @@ while(not end):
                         mqtt.ganhou_aux=0
                         telaJogo=True
                         telaWin=False
+                        audios=['./assets/audios/audio0.mp3','./assets/audios/audio1.mp3','./assets/audios/audio2.mp3','./assets/audios/audio3.mp3','./assets/audios/audio4.mp3',
+'./assets/audios/audio5.mp3','./assets/audios/audio6.mp3','./assets/audios/audio7.mp3','./assets/audios/audio8.mp3','./assets/audios/audio9.mp3',
+'./assets/audios/audio10.mp3','./assets/audios/audio11.mp3','./assets/audios/audio12.mp3','./assets/audios/audio13.mp3','./assets/audios/audio14.mp3']
 
         jogando = False
 
@@ -338,6 +341,9 @@ while(not end):
                         mqtt.ganhou_aux=0
                         telaJogo=True
                         telaLos=False
+                        audios=['./assets/audios/audio0.mp3','./assets/audios/audio1.mp3','./assets/audios/audio2.mp3','./assets/audios/audio3.mp3','./assets/audios/audio4.mp3',
+'./assets/audios/audio5.mp3','./assets/audios/audio6.mp3','./assets/audios/audio7.mp3','./assets/audios/audio8.mp3','./assets/audios/audio9.mp3',
+'./assets/audios/audio10.mp3','./assets/audios/audio11.mp3','./assets/audios/audio12.mp3','./assets/audios/audio13.mp3','./assets/audios/audio14.mp3']
         
         jogando = False
             
