@@ -40,7 +40,7 @@ def atualizaGraf():
 
     for i in range(5):
         if i in df['rodada'].unique():
-            count[i]=df['rodada'].value_counts()[i]
+            count[i-1]=df['rodada'].value_counts()[i]
 
     ax2.barh(rodadas,count)
     ax2.tick_params(axis='both', labelsize = 6)
