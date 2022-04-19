@@ -38,7 +38,7 @@ def atualizaGraf():
     rodadas='1','2','3','4','5'
     count = [0,0,0,0,0]
 
-    for i in range(5):
+    for i in range(1,6):
         if i in df['rodada'].unique():
             count[i-1]=df['rodada'].value_counts()[i]
 
